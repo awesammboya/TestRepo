@@ -1,23 +1,7 @@
 ---
 
-- hosts: host
-  become: yes # request password in order to run this playbook.
+- hosts: all
   tasks:
-  - name: install lldpad package
-    yum: # invoke the yum module for installation of lldpad package
-      name: lldpad # package to be installed
-      state: latest # the version to be installed.
-  
-  - name: check lldpad service status # now, after install, check the status
-    service:
-      name: lldpad
-      state: started
-#  - name: remove lldpad service  # now, after install, remove it
- #   service:
-  #    name: lldpad
-   #   state: absent
-  
-  - name: uninstall lldpad # try removing the package
-    yum: # use the yum module
-      pkg: lldpad # name of the package
-      state: absent # set the package to absent.
+    - name: Print message
+      debug:
+        msg: Oh, well. Eventually things work out. Hang in there!
