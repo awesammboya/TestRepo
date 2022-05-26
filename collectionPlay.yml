@@ -10,11 +10,11 @@
         type: collection
         name: community.network:3.0.1
         force: true
-      debug:
-        msg: Successful
+#      debug:
+#        msg: Successful
  
     - name: Set my default timezone to EST or American/New York
       community.general.timezone:
         name: America/New_York
-      debug:
-        msg: Done!
+#      debug:
+#        msg: Done!
