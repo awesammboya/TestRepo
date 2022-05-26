@@ -1,0 +1,20 @@
+---
+- hosts: all
+ 
+  collections:
+   - community.general
+ 
+  tasks:
+    - name: Install the community.network collection of a specific version
+      community.general.ansible_galaxy_install:
+        type: collection
+        name: community.network:3.0.1
+        force: true
+      debug:
+        msg: Successful
+ 
+    - name: Set my default timezone to EST or American/New York
+      community.general.timezone:
+        name: America/New_York
+      debug:
+        msg: Done!

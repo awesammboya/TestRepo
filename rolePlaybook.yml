@@ -1,0 +1,12 @@
+---
+- hosts: all
+ 
+  roles:
+   - set_timezone_role
+ 
+  tasks:
+    - name: Set my default timezone to EST or American/New York
+      community.general.timezone:
+        name: Asia/Tokyo
+      debug:
+        msg: Done!

@@ -1,0 +1,10 @@
+---  
+roles:
+  # from galaxy, install timezone
+  - src: yatesr.timezone
+  - name: set_timezone_role
+ 
+  # from Github - on terminal run: ansible-galaxy install -r  requirements.yml
+  - src: https://github.com/bennojoy/nginx
+  - version: master
+  - name: nginx_role
