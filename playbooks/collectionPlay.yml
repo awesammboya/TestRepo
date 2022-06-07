@@ -10,6 +10,6 @@
   #     name: community.network:3.0.1
   #     force: true
 
-   - name: Set my default timezone to EST or American/New York
-     community.general.timezone:
+  - name: Set my default timezone to EST or American/New York
+    community.general.timezone:
       name: America/New_York
