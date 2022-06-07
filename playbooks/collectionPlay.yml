@@ -1,7 +1,7 @@
 ---
 - hosts: all
-  collections:
-   - community.general
+  # collections:
+  #  - community.general
 
   tasks:
   #  - name: Install the community.network collection of a specific version
