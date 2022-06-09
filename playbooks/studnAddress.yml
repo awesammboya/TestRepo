@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    team: # using arrays, students, in ansible
+      Terebinth: 'Ottawa - Canada'
+      Malomalo: 'Melbourne - Australia'
+      Rapemo: 'Helsinki'
+      Melissa: 'Nairobi - Kenya'
+      Arthur: 'Cape Town - South Africa'
+      Kevin: 'JoBurg - South Africa'
+
+  tasks:
+    - name: Display how the team is distributed globally
+      debug:
+        msg: "The team is distributed as follows:  {{ team }}"
