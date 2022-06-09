@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    students: # using arrays, students, in ansible
+      - Terebinth
+      - Malomalo
+      - Rapemo
+      - Melissa
+      - Arthur
+      - Kevin
+
+  tasks:
+    - name: Print the name of the selected student
+      debug:
+        msg: "The selected student is {{ students[1] }}"
