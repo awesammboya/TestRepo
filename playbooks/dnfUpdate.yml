@@ -7,20 +7,20 @@
   #     description: EPEL repo
   #     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
 
-  # - name: update wget
-  #   dnf:
-  #     name: wget
-  #     state: latest
+  - name: update bzip2
+    dnf:
+      name: bzip2
+      state: latest
 #Assume multiple packages are to be updated at the same time. The set up would look as follows.
 # - name: update wget and bzip2
 #   dnf:
 #     name: ['wget', 'bzip2']
 #     state: latest
 
-  - name: update all packages # This is equivalent to running the 'dnf update' command
-    dnf:
-      name: "*"
-      state: latest
+  # - name: update all packages # This is equivalent to running the 'dnf update' command
+  #   dnf:
+  #     name: "*"
+  #     state: latest
 # some package updates might require update. In such cases, the following task need to be active and run too.
 #   - name: reboot the OS
 #     reboot:
