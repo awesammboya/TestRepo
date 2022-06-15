@@ -27,11 +27,11 @@
         hot_add_enabled: true
         size_MiB: 1024
       name: test_vm_3
-      nics:
-        - start_connected: true
-          type: VMXNET3
-          mac_type: GENERATED
-          backing:
-              type: STANDARD_PORTGROUP
-              network: "{{ network_id }}"
+      # nics:
+      #   - start_connected: true
+      #     type: VMXNET3
+      #     mac_type: GENERATED
+      #     backing:
+      #         type: STANDARD_PORTGROUP
+      #         network: "{{ network_id }}"
     register: vm_info
