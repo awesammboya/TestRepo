@@ -1,0 +1,268 @@
+# Red Hat OpenShift Container Platform
+https://console-openshift-console.apps.shanemcd.ocp4.testing.ansible.com
+# username:kubeadmin password: CMz7w-zYuum-mWWHD-7nuvU
+
+#Team onBoarding
+https://docs.google.com/document/d/1nAnQchK_DFTyw4jCk5cMLqPCl5XTB5r9j2s9iTSic_0/edit
+https://docs.google.com/document/d/1z2DDBwT1pNihO9t2cYjVGKcpE3uCkkaqEN7PgBj9MyA/edit#heading=h.dup0wcob1v31
+#SRE mind map
+https://miro.com/app/board/uXjVOXT7GU0=/
+https://github.com/ansible/aap-awscf
+#AOC SRE team
+https://docs.google.com/presentation/d/1cognudQ4IwmLL3rC-ESAfTGf9q5mMwvfcyGRWwC0etw/edit#slide=id.g1168ae3f9f2_0_35
+for RH learning resources : https://docs.google.com/document/d/1nAnQchK_DFTyw4jCk5cMLqPCl5XTB5r9j2s9iTSic_0/edit#heading=h.bfkve02eyi8k
+
+Courses:
+https://www.ansible.com/products/ansible-training
+https://www.ansible.com/products/ansible-community-training
+https://github.com/ansible/workshops
+https://role.rhu.redhat.com/rol-rhu/app/courses/rh294-8.4/pages/ch01
+
+#The process for porting a commit downstream:
+> git cherry-pick -x <commit-hash> the commit you want into a branch of the downstream operator repo (in this case https://code.engineering.redhat.com/gerrit/plugins/gitiles/automationhub-operator/+/refs/heads/release-2.1)
+> Open a Patch using git-review, which will create a patchset in gerrit, and will give you a URL for it in your terminal
+> a member of the AAP productization team will review it (usually me, @Dimitri Savineau, @pabelanger, @Satoe Imaishi or @Spredzy )
+> Run poll-upstream-sources job (part of CPaaS that checks for new code changes)
+> Run build-pipeline job (part of CPaaS that builds new containers to test with, also used for releases)
+
+https://docs.google.com/presentation/d/1ba2xaCikAl9B59j0tWIOW19u0jArLKw9nIN_heZBfvU/edit#slide=id.gf20c2089a6_0_851
+https://docs.google.com/document/d/12oZtR8NQn-zFOWwECZnk7lxFZ1XSg_qUK5NLzj2FMk4/edit
+https://lucid.app/lucidchart/039a7c6a-2fa3-4753-a9f4-b0c5936d42e0/view?page=imhpqHXPKwOP#
+
+Dave Hageman
+https://github.com/ansible/ansible-azure-sre/tree/main/playbooks
+https://gitlab.cee.redhat.com/ansible/ansible-on-clouds
+https://gitlab.cee.redhat.com/ansible
+https://gitlab.cee.redhat.com/aoc
+
+- git checkout -b <branchname> --track upstream/main
+- git branch # check the existence of the new branch created
+- cd directory
+- git add .
+- git status
+- git add /module/wherever/nameoffile  # adding/staging the specific file-m
+- git commit -m "nessage"
+- git push origin
+
+https://learngitbranching.js.org/
+
+fork the repo - Done
+git add remote upstream $ORIGINAL_REP
+git checkout -b $NAMEOFBRANCH --track upstream/main
+every once in a while do a git pull upstream
+
+  az login --tenant AnsibleWorks.onmicrosoft.com
+  az group delete --resource-group smboyaGroup
+ ./create.sh -l eastus
+ ./tools/deploy-managed-app.py mboya 'test4bicep' 'ansible-demo' 'R3dh4t1!'
+
+python3 ./tools/deploy-managed-app.py MondayEve 'restore1K'
+
+
+podman login registry.redhat.io
+podman pull $image
+podman logout registry.redhat.io
+podman login huburl --tls-verify=false
+podman push $image
+podman pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218
+
+Podman test
+podman login registry.redhat.io
+bash-4.4$ podman pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218
+	Trying to pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218...
+	Getting image source signatures
+	Checking if image destination supports signatures
+	Copying blob 16b78ed2e822 skipped: already exists  
+	Copying blob 131f1a26eef0 skipped: already exists  
+	Copying config 0e1c0c70db done  
+	Writing manifest to image destination
+	Storing signatures
+	0e1c0c70dbc541d61917f91e6ad3d05b82762c5a9b49774571f2a87d8f09be65
+bash-4.4$ podman logout registry.redhat.io
+Removed login credentials for registry.redhat.io
+bash-4.4$
+
+bash-4.4$ podman login hub.aap3hblhmaym6kao.az.awesomesauce.click --tls-verify=false
+Username: admin
+Password: 
+Login Succeeded!
+bash-4.4$ podman images
+REPOSITORY                                   TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi8/ubi-minimal  8.5-218     0e1c0c70dbc5  2 months ago  107 MB
+
+bash-4.4$ podman tag 0e1c0c70dbc5 hub.aap3hblhmaym6kao.az.awesomesauce.click/ubi-minimal
+bash-4.4$ podman tag 0e1c0c70dbc5 hub.aapxmkwwwxry2c64.az.awesomesauce.click/ubi-minimal
+
+bash-4.4$ podman images
+REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi8/ubi-minimal             8.5-218     0e1c0c70dbc5  2 months ago  107 MB
+hub.aap3hblhmaym6kao.az.awesomesauce.click/ubi-minimal  latest      0e1c0c70dbc5  2 months ago  107 MB
+
+bash-4.4$ podman push hub.aap3hblhmaym6kao.az.awesomesauce.click/ubi-minimal --tls-verify=false --remove-signatures
+Copying blob 4716779a2c02 done  
+Copying blob e8228e50fe18 [=====>--------------------------------] 17.0MiB / 102.1MiB
+Error: writing blob: uploading layer chunked: StatusCode: 413, <html>
+<head><title>413 Request Entity Too Large<...
+
+podman login registry.redhat.io
+podman pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218
+podman logout registry.redhat.io
+podman login hub.aapxmkwwwxry2c64.az.awesomesauce.click --tls-verify=false
+admin test4bicep
+podman images
+bash-4.4$ podman push hub.aapxmkwwwxry2c64.az.awesomesauce.click/ubi-minimal --tls-verify=false --remove-signatures
+
+Backup and Restore of Azure Block Storage
+https://issues.redhat.com/browse/AAP-2116
+https://issues.redhat.com/browse/AAP-2115
+
+podman login registry.redhat.io
+bash-4.4$ podman pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218
+	Trying to pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218...
+	Getting image source signatures
+	Checking if image destination supports signatures
+	Copying blob 16b78ed2e822 skipped: already exists  
+	Copying blob 131f1a26eef0 skipped: already exists  
+	Copying config 0e1c0c70db done  
+	Writing manifest to image destination
+	Storing signatures
+	0e1c0c70dbc541d61917f91e6ad3d05b82762c5a9b49774571f2a87d8f09be65
+bash-4.4$ podman logout registry.redhat.io
+Removed login credentials for registry.redhat.io
+bash-4.4$
+
+bash-4.4$ podman login hub.aap3hblhmaym6kao.az.awesomesauce.click --tls-verify=false
+Username: admin
+Password: Stay0ut0fThis1
+Login Succeeded!
+bash-4.4$ podman images
+REPOSITORY                                   TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi8/ubi-minimal  8.5-218     0e1c0c70dbc5  2 months ago  107 MB
+
+bash-4.4$ podman tag 0e1c0c70dbc5 hub.aap7t54cv4envknu.ansible-a.red-chesterfield.com/ubi-minimal
+
+bash-4.4$ podman images
+REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
+registry.access.redhat.com/ubi8/ubi-minimal             8.5-218     0e1c0c70dbc5  2 months ago  107 MB
+hub.aap3hblhmaym6kao.az.awesomesauce.click/ubi-minimal  latest      0e1c0c70dbc5  2 months ago  107 MB
+
+bash-4.4$ podman push hub.aap7t54cv4envknu.ansible-a.red-chesterfield.com/ubi-minimal --tls-verify=false --remove-signatures
+Copying blob 4716779a2c02 done  
+Copying blob e8228e50fe18 [=====>--------------------------------] 17.0MiB / 102.1MiB
+Error: writing blob: uploading layer chunked: StatusCode: 413, <html>
+<head><title>413 Request Entity Too Large<...
+
+
+
+podman login registry.redhat.io
+podman pull registry.access.redhat.com/ubi8/ubi-minimal:8.5-218
+podman logout registry.redhat.io
+podman login hub.aapxmkwwwxry2c64.az.awesomesauce.click --tls-verify=false
+admin test4bicep
+podman images
+bash-4.4$ podman push hub.aapxmkwwwxry2c64.az.awesomesauce.click/ubi-minimal --tls-verify=false --remove-signatures
+
+To delete a blob storage:
+
+in Azure portal, consider a successful deployment e.g 
+https://portal.azure.com/#@AnsibleWorks.onmicrosoft.com/resource/subscriptions/3f7e29ba-24e0-42f6-8d9c-5149a14bda37/resourceGroups/smboyaGroup/providers/Microsoft.Solutions/applications/AnsibleAutomationPlatform/overview
+
+click the mrg link e.g mrg-rhaapomsa-preview-20220303104844
+scroll down to the corresponding storage account and click on it: staapkdkvvtgfvc2kgeastus
+click on the blob service > select pulp by checking the check box next to it,
+now, delete. Ensure that you check overide Azure policy > ok
+failure message:
+
+to sync and retrieve the lost data from galaxy
+log into the hub url,
+click collections > repo management > go to remote channel.
+
+This can't be tested at the moment.
+
+console.redhat.com
+https://console.redhat.com/ansible/automation-hub/partners
+
+https://github.com/ansible/aap-azurerm/blob/main/modules/storage/storageAccounts.bicep
+
+https://www.redhat.com/en/technologies/management/ansible/try-it/success
+
+#automation hub tokens.
+https://console.redhat.com/ansible/automation-hub/token
+
+#ServiceNow
+Submitted : 2022-03-22 12:09:09
+Request Number : REQ3628304
+Estimated Delivery : --
+https://redhat.service-now.com/esc?id=sc_request&is_new_order=true&table=sc_request&sys_id=6bf023cf879ac1d0a92b4156cebb35b4
+
+
+env.sh
+set_env_defaults() {
+    NAMING_PREFIX="makaMboya"
+    NAMING_SUFFIX=""
+    LOCATION="eastus"
+}
+
+
+Running into 403 error in the hub after the token?
+Go to azure portal, rsrcgrp - mnagedappgrp- vnet- web app firewall - switch to detection mode
+
+#Latest code
+git checkout main
+git pull upstream main
+git push origin
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:awesammboya/aap-azurerm.git
+   b8c872a..ffbdffa  main -> main
+bash-4.4$ git checkout -b <nameofthebranch>
+
+
+az login --tenant redhat0
+az account set --subscription 9405386e-32dc-4f07-981b-5fb648f0b997
+David Hageman11:48 AM
+az aks show --name aksaapmwkkgvpxcoxki-eastus --resource-group mrg-aap_v_0_0_1-preview-20220303113011
+
+ansible-galaxy collection install
+
+https://github.com/pulp/pulp-operator
+https://github.com/ansible/awx-operator
+https://github.com/keycloak/keycloak-operator
+
+
+
+[infrastructure]
+client_id=68cf0f94-6932-4cce-a03b-e238f677a8fd
+tenant=97e9a597-d113-4e68-83d3-15cd863399c9
+secret=.9X7Q~0pFVr5Rnjd--erO~r_YhKnDtopCVukG
+subscription_id=edbcb04f-cf50-46cb-9fea-8cf4b9bd4f3e
+
+[infrastructure-dev]
+client_id=3f4ce546-ac50-4f53-86bb-053e5b1e70f5
+tenant=2a98a58d-c9fc-4654-a339-db5936b7a56c
+secret=S5g7Q~sfmyigQC036jchX99pehRB1v-v.j6Uv
+subscription_id=4da397a2-cd45-42c4-b7f3-989b403d832a
+
+[ansible-sre-dev]
+client_id=88b563e5-6fee-4bfa-a5c0-5bacc0e1d129
+tenant=2a98a58d-c9fc-4654-a339-db5936b7a56c
+secret=bVV7Q~lq.K~Rgzcp3lVe_-NP3nYhMGRxQzhfq
+subscription_id=4da397a2-cd45-42c4-b7f3-989b403d832a
+
+[ansible-sre]
+client_id=0bfd61de-e2f1-4165-aa06-e81cc3ba2df1
+tenant=97e9a597-d113-4e68-83d3-15cd863399c9
+secret=iww7Q~dJ8yFdc32UkGPwMu2QkLz_sfOA41onz
+subscription_id=edbcb04f-cf50-46cb-9fea-8cf4b9bd4f3e
+
+[default]
+client_id=88b563e5-6fee-4bfa-a5c0-5bacc0e1d129
+tenant=2a98a58d-c9fc-4654-a339-db5936b7a56c
+secret=bVV7Q~lq.K~Rgzcp3lVe_-NP3nYhMGRxQzhfq
+subscription_id=4da397a2-cd45-42c4-b7f3-989b403d832a
+
+[infrastructure-aw]
+client_id=80cc965b-47cd-43ce-b752-e30b3c9823e5
+tenant=0b4d9aac-c9b7-4832-9013-2ab4991d5533
+subscription_id=3f7e29ba-24e0-42f6-8d9c-5149a14bda37
+secret=9wJ7Q~N7N~gHMsmmm.kYlY9BsrBQLIlmvzDL3
+
