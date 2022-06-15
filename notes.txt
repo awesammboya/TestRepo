@@ -227,5 +227,8 @@ Host Config key: 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
 
 curl -k -f -i -H 'Content-Type:application/json' -XPOST -d '{"host_config_key": "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"}' \
                   https://192.168.122.141/api/v2/job_templates/42/callback/
+                  
+                  
+testing
 
 
