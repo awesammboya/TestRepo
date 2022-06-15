@@ -1,0 +1,231 @@
+https://drive.google.com/drive/u/0/folders/1cwGz5rL5FU-I4Y0huN8O_ovq2p27Nypy
+https://docs.google.com/document/d/1MO8g8CBbRHKzVNH1WLw-IR52qUn2LzvHwC_Pcc7A9f8/edit#
+https://drive.google.com/drive/u/0/folders/1cwGz5rL5FU-I4Y0huN8O_ovq2p27Nypy
+https://docs.google.com/presentation/d/1SAxgYSrWd7LznIjPj4VaGMfDoN0ZvwBY2yN38vvyBiw/edit#slide=id.ga28f736af7_0_211
+https://docs.google.com/document/d/1MO8g8CBbRHKzVNH1WLw-IR52qUn2LzvHwC_Pcc7A9f8/edit
+
+Formatting in slack
+https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks
+
+1. fork the repo
+2. git remote add upstream git@github.com/whatever
+3. git checkout -b $NAMEOFBRANCH --track upstream/main
+4. every once in a while do a git pull upstream
+
+Step
+Of course, I've already forked.
+
+2. git add remote upstream main
+3. git checkout -b newBranch --track upstream/main
+
+
+I liked the idea that my repo was set up such that for push, 
+I'd do: git push origin
+and for pull, 
+I'd do: git pull upstream main
+
+Questions for Gabe
+adding extra vars: https://access.redhat.com/solutions/3938741
+how do I get to create source page e.g for Importing Azure inventory or source control?
+
+
+> awx-manage
+
+> shell_plus
+> settings.DEFAULT_EXECUTION_ENVIRONMENT
+ee-supported-rhel8:latest
+ansible-automation-platform-21
+
+https://docs.ansible.com/automation-controller/4.0.1/html/userguide/inventory_plugins_templates.html#microsoft-azure-resource-manager
+
+192.168.122.132 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNlrLPhPGmrx2PAH61LOpkxcnkFTsdFsqgJmzJo8RDYWXcQrjiJUB5WHSjS6OkljDtlxxFoEOl95dauKY6mgCyI=
+ssh keys
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+https://www.howtoforge.com/linux-basics-how-to-install-ssh-keys-on-the-shell
+https://www.ssh.com/academy/ssh/copy-id
+
+1. git pull upstream
+2. git checkout -b <new_branch> upstream/main
+3. git add
+4. git commit
+5. git push origin <new branch>
+6. if error do git pull --rebase
+if conflict accept incoming
+7. again git add <changed_files> and git rebase --continue
+8. git push
+
+yamllint playbooks/endpoint_pingtest_v1.yml
+
+splunk
+Waiting for web server at http://127.0.0.1:8000 to be available....... Done
+If you get stuck, we're here to help.  
+Look for answers here: http://docs.splunk.com
+The Splunk web interface is at http://g-oremo:8000
+Directory: /opt/splunk/bin
+
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+sudo usermod -a -G libvirt $(whoami)
+
+splunk token
+388f0174-c83a-4cc9-b8a1-99ae445707c4
+d7ecd7cc-902c-4401-abac-cc3e04671e78
+link: http://g-oremo:8000/en-US/manager/search/adddatamethods/success
+
+http://g-oremo:8000/en-US/manager/search/http-eventcollector
+http://192.168.1.18:8000/en-US/manager/launcher/http-eventcollector
+
+git@github.com:ansible/ansible-azure-sre.git
+<name space>.<collection name>.<module name>
+https://github.com/ansible/awx/blob/devel/awx/playbooks/project_update.yml
+
+https://github.com/ansible/ansible-azure-sre/blob/main/collections/requirements.yml
+https://github.com/ansible/ansible-azure-sre/blob/main/collections/requirements.yml
+
+
+curl -H "Authorization: Splunk 388f0174-c83a-4cc9-b8a1-99ae445707c4" http://192.168.1.18:8000/en-US/manager/launcher/http-eventcollector -d '{"sourcetype": "aap_activities", "event": "http auth ftw!"}'
+   
+  name of the app: example-app 
+  web: https://contoso.org/exampleapp
+  https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Overview/appId/3b4addeb-ebe0-4323-b3f3-446265fedd71/objectId/c7ea8358-44fc-41d8-958f-c009179b08ae/isMSAApp//defaultBlade/Overview/appSignInAudience/AzureADMyOrg/servicePrincipalCreated/true
+  
+  
+  https://login.microsoftonline.com/common/oauth2/authorize?client_id=3b4addeb-ebe0-4323-b3f3-446265fedd71&redirect_uri=https://192.168.122.141/sso/complete/azuread-oauth2/&state=3f4tEjvAZCvo2RnskIDFAASWx49GemG8&response_type=code&scope=openid+profile+user_impersonation+email
+  
+  redirect_uri=https://192.168.122.141/sso/complete/azuread-oauth2/&state=3f4tEjvAZCvo2RnskIDFAASWx49GemG8
+  
+tenantID: 64dc69e4-d083-49fc-9569-ebece1dd1408
+app(clientID): 3b4addeb-ebe0-4323-b3f3-446265fedd71
+secretID=b1652350-c94c-47af-9588-7a4ea58924e2
+Desc: AAP Client Secret 2022-05-31
+Expires: 5/31/2024
+Value: Ojf8Q~Dyw.3ELfZVqQdx8JUTOdVWbVDbjx3p.b.i
+Secret ID: 509f60a5-fdfd-4cac-b094-4ae1a1968d9a
+
+curl -H "Authorization:Splunk 556da1a1-88d0-4c14-bcf4-826b02f655a3" http://localhost:8088/services/collector -d '{"sourcetype": "json", "event": "Hello World!"}'
+
+http://192.168.1.18:8000/en-US/app/search/search?q=search%20host%3D%22localhost%3A8088%22&sid=1654189501.1462&display.page.search.mode=smart&dispatch.sample_ratio=1&workload_pool=&earliest=-24h%40h&latest=now
+
+
+[sammboya@g-oremo ~]$ ansible-galaxy collection publish -c /home/sammboya/DevRepos/ansible-azure-sre/redhat-ansible_azure_sre-0.0.1.tar.gz -vv
+Publishing collection artifact '/home/sammboya/DevRepos/ansible-azure-sre/redhat-ansible_azure_sre-0.0.1.tar.gz' to published_repo https://192.168.122.6/api/galaxy
+Collection has been published to the Galaxy server published_repo https://192.168.122.6/api/galaxy
+Waiting until Galaxy import task https://192.168.122.6/api/galaxy/v3/imports/collections/6a0b85b4-a6b9-4319-a512-be296dd5fba7/ has completed
+Collection has been successfully published and imported to the Galaxy server published_repo https://192.168.122.6/api/galaxy
+[sammboya@g-oremo ~]$ 
+
+https://hooks.slack.com/services/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
+github aap_token: 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
+Creating github webhook
+https://docs.ansible.com/ansible-tower/latest/html/userguide/webhooks.html#github-webhook-setup
+
+
+some ansible learning stuff
+https://minikube.sigs.k8s.io/docs/start/
+https://www.digitalocean.com/community/tutorials/how-to-use-loops-in-ansible-playbooks
+https://www.youtube.com/watch?v=V5QyMa1JPSw
+
+Slack  
+https://hooks.slack.com/services/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
+https://api.slack.com/apps/A03FN7BBTN3/oauth
+
+
+TestApp
+https://api.slack.com/apps/A03FN7BBTN3/oauth
+token: xoxb-2226630237-3543844417654-CdfYPNZHaMGesMAoHHz41b54
+
+To close the http https
+https://linuxconfig.org/redhat-8-open-http-port-80-and-https-port-443-with-firewalld
+INC2243059
+
+Jobs
+https://us-redhat.icims.com/jobs/91736/associate-site-reliability-engineer/job?hub=7&mobile=false&width=1140&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240
+https://careers-redhat.icims.com/jobs/search?ss=1&searchKeyword=associate+engineer&searchLocation=12781--Remote
+
+
+Week 6
+https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_updates_module.html
+https://4sysops.com/archives/automate-windows-updates-with-ansible/
+http://www.freekb.net/Article?id=3079
+AWS account creation: 
+https://source.redhat.com/departments/it/digitalsolutionsdelivery/it-infrastructure/ithci/cloud/docs/internal/account_operations
+https://www.redhat.com/sysadmin/deployment-ansible-playbooks
+
+Deploying VM using Ansible
+https://www.stackovercloud.com/2021/04/12/automating-a-rhel-8-installation-using-the-vmware-rest-ansible-collection/
+https://docs.ansible.com/ansible/2.6/vmware/scenario_clone_template.html
+https://docs.extrahop.com/8.8/rest-vmware-deploy/
+https://ugurakgul.medium.com/provisioning-a-linux-vm-with-ansible-in-vmware-18cf45a53cb3
+https://awstip.com/create-a-vmware-vsphere-virtual-machine-ansible-module-vmware-guest-cc58d6413dd2
+
+Downloading vmware.
+https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
+https://unixcop.com/install-vmware-workstation-16-pro-rhel8-centos-8/
+
+https://www.redhat.com/sysadmin/ansible-provisioning-aws-cloud
+https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_module.html
+https://medium.datadriveninvestor.com/devops-using-ansible-to-provision-aws-ec2-instances-3d70a1cb155f
+
+
+provisioning callbacks
+https://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html#provisioning-callbacks
+https://www.redhat.com/sysadmin/deployment-ansible-playbooks
+https://www.ansible.com/hubfs/2017_Resources/ansible_festSF2017.pdf
+
+rhel84
+root
+ /usr/bin/timedatectl set-timezone America/Chicago
+ pwd
+dnf update
+/usr/bin/timedatectl set-timezone America/Chicago
+date
+ timedatectl
+timedatectl list-timezones 
+timedatectl list-timezones | grep America
+timedatectl set-timezone America/New_York
+hostname -I
+
+rhel84_db root
+ls -al /home/sammboya/.ssh
+ls .ssh/
+cat .ssh/authorized_keys
+ls /root/.ssh/
+cat /root/.ssh/id_rsa
+cat /root/.ssh/id_rsa.pub
+
+
+vm84
+http://192.168.122.141:8000/en-US/app/search/search?earliest=rt-30m&latest=rt&q=search%20host%3D%22localhost%3A8088%22&display.page.search.mode=smart&dispatch.sample_ratio=1&workload_pool=&display.prefs.events.count=50&sid=rt_1655128472.4705
+
+https://www.youtube.com/watch?v=MxP5wVVe9uE
+54
+
+https://docs.extrahop.com/8.8/rest-vmware-deploy/
+
+location:
+/root/vmware/Ubuntu
+/root/vmware/Win_10
+
+smartsheet request
+https://redhat.service-now.com/help?id=rh_ticket&is_new_order=true&table=sc_request&sys_id=b5b999861b80d5104cec766dcc4bcb40
+AWS request
+https://redhat.service-now.com/help?id=rh_ticket&is_new_order=true&table=sc_request&sys_id=f144eb461b001510839e32a3cc4bcbda
+
+
+https://app.smartsheet.com/b/home?lx=Dq9kYcZtga7gRN0BSn2h7g&utm_source=marketo&utm_medium=email&utm_campaign=drip-free-user-granacha&mem=button&mkt_tok=NDY0LU9OTS0xNDkAAAGE_a41M4AW2WD1v3X2poa2lx_Ht6ptCCLbYAWtah83rB_myMgE9tiDAy-KZyq8EpWjPB-p1vvyBjTe3Sz_hsABIORCPKeNnWFEtDkMnHVsIAZHOoXU
+
+Success! Thank you for your time.   We will review your requirements and follow up as needed.  If you have immediate questions, please contact Chrissy Krzeminski (ckrzemin@redhat.com).   Look forward to working with you.
+
+linux host config key
+AAAAC3NzaC1lZDI1NTE5AAAAIKJOYLKZ1EsZSRskL4PlQn7UCEuHG7Z+qJjB6vIj5Jmh
+
+windows
+fbd204a7-318e-4dd3-86e0-e6d524fc3f98
+
+.132
+Host Config key: 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
+
+curl -k -f -i -H 'Content-Type:application/json' -XPOST -d '{"host_config_key": "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"}' \
+                  https://192.168.122.141/api/v2/job_templates/42/callback/
+
+
