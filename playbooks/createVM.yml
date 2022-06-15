@@ -1,36 +1,37 @@
 ---
-collections:
-  - name: vmware.vmware_rest
 - hosts: all
+
+  collections:
+    - vmware.vmware_rest
 
   tasks:
   - name: Create a virtual machine
     vmware.vmware_rest.vcenter_vm:
-    	boot:
+      boot:
         delay: 0
         enter_setup_mode: false
         retry: false
         retry_delay: 10000
         type: "BIOS"
-    	boot_devices: []
-    	cdroms:
+      boot_devices: []
+      cdroms:
         - allow_guest_control: true
-    	cpu:
+      cpu:
         cores_per_socket: 1
         count: 1
         hot_add_enabled: true
         hot_remove_enabled: false
-    	guest_OS: "OTHER_LINUX_64"
-    	hardware_version: "VMX_13"
-    	memory:
+      guest_OS: "OTHER_LINUX_64"
+      hardware_version: "VMX_13"
+      memory:
         hot_add_enabled: true
         size_MiB: 1024
-    	name: test_vm_3
-    	nics:
+      name: test_vm_3
+      nics:
         - start_connected: true
           type: VMXNET3
-        	mac_type: GENERATED
-        	backing:
+          mac_type: GENERATED
+          backing:
               type: STANDARD_PORTGROUP
               network: "{{ network_id }}"
-  	register: vm_info
+    register: vm_info
