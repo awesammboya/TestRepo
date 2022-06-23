@@ -1,0 +1,12 @@
+---
+- name: harden linux systems
+  hosts: all
+  become: true
+  vars:
+    - harden_firewall: false
+
+  tasks:
+    - name: Configure firewall
+      when: harden_firewall | bool
+      include_role:
+        name: linux-system-roles.firewall
